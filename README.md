@@ -1,5 +1,7 @@
 # Kotlin Leap Year 📆 💀 👀
 
+![Kotlin Leap Year](https://whizpool.com/wp-content/uploads/2022/10/kotlin1.jpg)
+
 A **Leap Year** is a year that is evenly divisible by 4, except for years that are divisible by 100 but not by 400. This means that the year 2000 was a leap year, but 1900 was not.
 
 Here is a program in `Kotlin` that determines whether a given year is a leap year or not:
