@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ce83b2-0f14-4b8b-801e-2c68479a25ac" name="Changes" comment="Code reformat made." />
+    <list default="true" id="e8ce83b2-0f14-4b8b-801e-2c68479a25ac" name="Changes" comment="README.md changed." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691930100231</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="README.md changed.">
+      <option name="closed" value="true" />
+      <created>1691930616361</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1691930616361</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,6 +111,7 @@
     <MESSAGE value="License, Donation Link, Code output added in README.md" />
     <MESSAGE value="Project image added in README.md" />
     <MESSAGE value="Code reformat made." />
-    <option name="LAST_COMMIT_MESSAGE" value="Code reformat made." />
+    <MESSAGE value="README.md changed." />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md changed." />
   </component>
 </project>
