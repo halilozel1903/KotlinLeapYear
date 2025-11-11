@@ -1,18 +1,18 @@
 package com.example.leapyear
 
-import com.example.leapyear.data.datasource.ConsoleYearDataSource
-import com.example.leapyear.data.repository.YearRepositoryImpl
-import com.example.leapyear.domain.usecase.IsLeapYearUseCase
-import com.example.leapyear.presentation.view.ConsoleView
-import com.example.leapyear.presentation.viewmodel.LeapYearViewModel
+import com.example.leapyear.di.DependencyContainer
 
 /**
- * Application entry point wired with a simple clean architecture stack.
+ * Application entry point following Clean Architecture principles.
+ * 
+ * Clean Architecture layers:
+ * - Presentation: View, ViewModel, UI State
+ * - Domain: Use Cases, Repository Interfaces, Entities
+ * - Data: Repository Implementations, Data Sources
+ * 
+ * The dependency flow goes from outer layers (UI) to inner layers (Domain),
+ * with dependencies injected through the DependencyContainer.
  */
 fun main() {
-    val dataSource = ConsoleYearDataSource()
-    val repository = YearRepositoryImpl(dataSource)
-    val viewModel = LeapYearViewModel(repository, IsLeapYearUseCase())
-
-    ConsoleView(viewModel).render()
+    DependencyContainer.consoleView.render()
 }
