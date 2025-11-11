@@ -2,6 +2,9 @@ package com.example.leapyear.data.datasource
 
 /**
  * Defines the contract for retrieving the user's preferred year from any data source.
+ * 
+ * This interface follows the Interface Segregation Principle and allows for
+ * different implementations (console, file, API, etc.) without changing the domain logic.
  */
 fun interface YearDataSource {
     /**
