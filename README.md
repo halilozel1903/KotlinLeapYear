@@ -4,7 +4,106 @@
 
 A **Leap Year** is a year that is evenly divisible by 4, except for years that are divisible by 100 but not by 400. This means that the year 2000 was a leap year, but 1900 was not.
 
-Here is a program in `Kotlin` that determines whether a given year is a leap year or not:
+This project demonstrates **Clean Architecture** principles in Kotlin, showcasing how to structure a simple application with proper separation of concerns.
+
+## 🏗️ Clean Architecture
+
+This project follows Clean Architecture principles with clear separation of layers:
+
+### Architecture Layers
+
+```
+┌─────────────────────────────────────────────┐
+│         Presentation Layer                  │
+│  ┌──────────┐  ┌───────────┐  ┌─────────┐ │
+│  │   View   │  │ ViewModel │  │ UIState │ │
+│  └──────────┘  └───────────┘  └─────────┘ │
+└─────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────┐
+│            Domain Layer                     │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐ │
+│  │ Use Case │  │ Entity   │  │Repository│ │
+│  │          │  │ (Model)  │  │Interface │ │
+│  └──────────┘  └──────────┘  └──────────┘ │
+└─────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────┐
+│             Data Layer                      │
+│  ┌──────────────┐  ┌──────────────────────┐│
+│  │ Repository   │  │    Data Source       ││
+│  │Implementation│  │                      ││
+│  └──────────────┘  └──────────────────────┘│
+└─────────────────────────────────────────────┘
+```
+
+### Layer Responsibilities
+
+#### 📱 Presentation Layer (`presentation/`)
+- **View**: Renders UI and handles user interactions (console-based)
+- **ViewModel**: Manages presentation logic and transforms domain data to UI state
+- **UIState**: Represents possible UI states (Success, Error)
+
+#### 💼 Domain Layer (`domain/`)
+- **Use Cases**: Contains business logic (e.g., `IsLeapYearUseCase`)
+- **Entities/Models**: Core business models with validation (`Year`)
+- **Repository Interfaces**: Abstractions for data access
+
+#### 💾 Data Layer (`data/`)
+- **Repository Implementation**: Concrete implementation of domain repositories
+- **Data Sources**: Handle data retrieval (console input, API, database, etc.)
+
+#### 🔧 Dependency Injection (`di/`)
+- **DependencyContainer**: Manages object creation and dependency injection
+
+### Key Principles
+
+1. **Dependency Rule**: Dependencies point inward. Inner layers know nothing about outer layers.
+2. **Single Responsibility**: Each class has one reason to change.
+3. **Dependency Inversion**: High-level modules don't depend on low-level modules; both depend on abstractions.
+4. **Interface Segregation**: Use focused interfaces (`YearDataSource`, `YearRepository`).
+
+## 🚀 Usage
+
+### Running the Application
+
+```bash
+# Compile the project
+kotlinc -d out $(find src/main/kotlin -name "*.kt" -type f)
+
+# Run the application
+kotlin -classpath out com.example.leapyear.MainKt
+```
+
+### Example Interaction
+
+```kotlin
+Enter favorite year: 2024
+2024 is a leap year.
+```
+
+```kotlin
+Enter favorite year: 2023
+2023 is not a leap year.
+```
+
+### Input Validation
+
+The application validates input and provides meaningful error messages:
+
+```kotlin
+Enter favorite year: abc
+Error: Invalid input
+```
+
+```kotlin
+Enter favorite year: -5
+Error: Year must be a positive number
+```
+
+## 📝 Code Example
+
+The core leap year logic is encapsulated in the domain entity:
 
 ```kotlin
 fun isLeapYear(year: Int?): Boolean {
@@ -25,14 +124,17 @@ fun main() {
     }
 }
 ```
+
 In this program, the `isLeapYear()` function takes a year as input and returns true if it is a leap year, and false otherwise. The function checks if the year is divisible by 4, and if it is, it checks if it is not divisible by 100 or if it is divisible by 400.
 
-In the main function, we can test the `isLeapYear()` function by passing in a year and printing whether it is a leap year or not. In this case, we're checking the year 2023, which is not a leap year.
+## 🧪 Testing
 
-```kotlin
-Enter favorite year: 2023
-2023 is not a leap year.
-```
+The architecture makes testing easier by allowing each layer to be tested independently:
+
+- **Unit Tests**: Test use cases and domain logic in isolation
+- **Integration Tests**: Test repository implementations with mock data sources
+- **UI Tests**: Test view models with mock repositories
+
 ## Donation 💸
 
 You can support by buying a coffee. ☕️
@@ -44,7 +146,7 @@ You can support by buying a coffee. ☕️
 ```
 MIT License
 
-Copyright (c) 2023 Halil OZEL
+Copyright (c) 2024 Halil OZEL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
